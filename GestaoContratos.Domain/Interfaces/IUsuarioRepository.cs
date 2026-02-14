@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using GestaoContratos.Domain.Entities;
 
 namespace GestaoContratos.Domain.Interfaces
@@ -14,9 +14,9 @@ namespace GestaoContratos.Domain.Interfaces
         int ContarMastersAtivos();
 
         Usuario? ObterPorId(Guid id);
+        Usuario? Autenticar(string login, string senha);
+        Usuario? ObterPorLogin(string login);
 
-        Task<Usuario?> Autenticar(string login, string senha);
-        Task<Usuario?> ObterPorLogin(string login);
-
+        List<Usuario> ObterTodos();
     }
 }

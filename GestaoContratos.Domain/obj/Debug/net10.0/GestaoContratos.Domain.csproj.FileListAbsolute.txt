@@ -10,3 +10,16 @@ C:\Users\Leonardo\source\repos\GestaoContratos.Domain\obj\Debug\net10.0\GestaoCo
 C:\Users\Leonardo\source\repos\GestaoContratos.Domain\obj\Debug\net10.0\refint\GestaoContratos.Domain.dll
 C:\Users\Leonardo\source\repos\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.pdb
 C:\Users\Leonardo\source\repos\GestaoContratos.Domain\obj\Debug\net10.0\ref\GestaoContratos.Domain.dll
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\bin\Debug\net10.0\GestaoContratos.Domain.deps.json
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\bin\Debug\net10.0\GestaoContratos.Domain.dll
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\bin\Debug\net10.0\GestaoContratos.Domain.pdb
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.csproj.AssemblyReference.cache
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.AssemblyInfoInputs.cache
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.AssemblyInfo.cs
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.sourcelink.json
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.dll
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\refint\GestaoContratos.Domain.dll
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\GestaoContratos.Domain.pdb
+C:\Users\Leonardo\source\repos\teste\GestaoContratos.Domain\obj\Debug\net10.0\ref\GestaoContratos.Domain.dll

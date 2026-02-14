@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leonardo\\source\\repos\\GestaoContratos.Data\\GestaoContratos.Data.csproj": {}
+    "C:\\Users\\Leonardo\\source\\repos\\teste\\GestaoContratos.Data\\GestaoContratos.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leonardo\\source\\repos\\GestaoContratos.Data\\GestaoContratos.Data.csproj": {
+    "C:\\Users\\Leonardo\\source\\repos\\teste\\GestaoContratos.Data\\GestaoContratos.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leonardo\\source\\repos\\GestaoContratos.Data\\GestaoContratos.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Leonardo\\source\\repos\\teste\\GestaoContratos.Data\\GestaoContratos.Data.csproj",
         "projectName": "GestaoContratos.Data",
-        "projectPath": "C:\\Users\\Leonardo\\source\\repos\\GestaoContratos.Data\\GestaoContratos.Data.csproj",
+        "projectPath": "C:\\Users\\Leonardo\\source\\repos\\teste\\GestaoContratos.Data\\GestaoContratos.Data.csproj",
         "packagesPath": "C:\\Users\\Leonardo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leonardo\\source\\repos\\GestaoContratos.Data\\obj\\",
+        "outputPath": "C:\\Users\\Leonardo\\source\\repos\\teste\\GestaoContratos.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

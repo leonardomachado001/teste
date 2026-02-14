@@ -1,22 +1,20 @@
-﻿using Npgsql;
+﻿using System;
+using System.Configuration;
+using Npgsql;
 
 namespace GestaoContratos.Infrastructure.Database
 {
     public static class DatabaseConnection
     {
-        private static string? _connectionString;
-
-        public static void Configure(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
-
         public static NpgsqlConnection GetConnection()
         {
-            if (string.IsNullOrEmpty(_connectionString))
-                throw new InvalidOperationException("Connection string não configurada.");
+            var connectionString =
+                ConfigurationManager.ConnectionStrings["PostgresConnection"]?.ConnectionString;
 
-            return new NpgsqlConnection(_connectionString);
+            if (string.IsNullOrEmpty(connectionString))
+                throw new InvalidOperationException("Connection string não encontrada no App.config.");
+
+            return new NpgsqlConnection(connectionString);
         }
     }
 }

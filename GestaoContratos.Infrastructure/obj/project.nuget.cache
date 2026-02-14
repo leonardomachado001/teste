@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "736uq8jiVH8=",
+  "dgSpecHash": "9A972sb2u0U=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leonardo\\source\\repos\\GestaoContratos.Infrastructure\\GestaoContratos.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Leonardo\\source\\repos\\teste\\GestaoContratos.Infrastructure\\GestaoContratos.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leonardo\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Leonardo\\.nuget\\packages\\closedxml\\0.105.0\\closedxml.0.105.0.nupkg.sha512",
