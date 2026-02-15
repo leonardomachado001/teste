@@ -4,8 +4,8 @@ using Npgsql;
 using GestaoContratos.Domain.Entities;
 using GestaoContratos.Domain.Enums;
 using GestaoContratos.Domain.Interfaces;
-using BCrypt.Net;
 using GestaoContratos.Infrastructure.Database;
+using BCrypt.Net;
 
 namespace GestaoContratos.Infrastructure.Repositories
 {
@@ -21,7 +21,8 @@ namespace GestaoContratos.Infrastructure.Repositories
             using var cmd = new NpgsqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@login", login);
 
-            return (long)cmd.ExecuteScalar() > 0;
+            var count = (long)cmd.ExecuteScalar();
+            return count > 0;
         }
 
         public string GerarLogin(string nomeCompleto)
@@ -43,7 +44,7 @@ namespace GestaoContratos.Infrastructure.Repositories
 
             var sql = @"
                 INSERT INTO usuarios
-                (id, nomecompleto, login, email, senhahash, perfil, ativo, datacriacao)
+                (id, nome_completo, login, email, senha_hash, perfil, ativo, data_criacao)
                 VALUES
                 (@id, @nome, @login, @email, @senha, @perfil, @ativo, @data);
             ";
@@ -69,7 +70,7 @@ namespace GestaoContratos.Infrastructure.Repositories
 
             var sql = @"
                 UPDATE usuarios SET
-                    nomecompleto = @nome,
+                    nome_completo = @nome,
                     email = @email,
                     perfil = @perfil,
                     ativo = @ativo
@@ -92,11 +93,16 @@ namespace GestaoContratos.Infrastructure.Repositories
             using var conn = DatabaseConnection.GetConnection();
             conn.Open();
 
-            var sql = "SELECT COUNT(1) FROM usuarios WHERE perfil = 'Master' AND ativo = true";
+            var sql = @"
+                SELECT COUNT(1)
+                FROM usuarios
+                WHERE perfil = 'Master' AND ativo = true;
+            ";
 
             using var cmd = new NpgsqlCommand(sql, conn);
 
-            return (int)(long)cmd.ExecuteScalar();
+            var count = (long)cmd.ExecuteScalar();
+            return (int)count;
         }
 
         public Usuario? ObterPorId(Guid id)
@@ -134,12 +140,12 @@ namespace GestaoContratos.Infrastructure.Repositories
 
             var usuario = MapearUsuario(reader);
 
+            // BCrypt
             if (!BCrypt.Net.BCrypt.Verify(senha, usuario.SenhaHash))
                 return null;
 
             return usuario;
         }
-
 
         public Usuario? ObterPorLogin(string login)
         {
@@ -161,12 +167,12 @@ namespace GestaoContratos.Infrastructure.Repositories
 
         public List<Usuario> ObterTodos()
         {
+            var lista = new List<Usuario>();
+
             using var conn = DatabaseConnection.GetConnection();
             conn.Open();
 
-            var lista = new List<Usuario>();
-
-            var sql = "SELECT * FROM usuarios ORDER BY nomecompleto";
+            var sql = "SELECT * FROM usuarios ORDER BY nome_completo";
 
             using var cmd = new NpgsqlCommand(sql, conn);
             using var reader = cmd.ExecuteReader();
@@ -195,6 +201,5 @@ namespace GestaoContratos.Infrastructure.Repositories
                 DataCriacao = reader.GetDateTime(reader.GetOrdinal("data_criacao"))
             };
         }
-
     }
 }

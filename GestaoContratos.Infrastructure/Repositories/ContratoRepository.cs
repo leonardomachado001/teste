@@ -286,13 +286,112 @@ namespace GestaoContratos.Infrastructure.Repositories
         }
 
         public List<FinanceiroAgrupadoDTO> ObterFinanceiroPorGestor()
-            => new();
+        {
+            using var conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            var lista = new List<FinanceiroAgrupadoDTO>();
+
+            var sql = @"
+        SELECT 
+            gestor_contrato AS nome,
+            SUM(valor_total) AS total,
+            SUM(CASE WHEN fim_vigencia >= CURRENT_DATE THEN valor_total ELSE 0 END) AS ativo,
+            SUM(CASE WHEN fim_vigencia < CURRENT_DATE THEN valor_total ELSE 0 END) AS vencido
+        FROM contratos
+        GROUP BY gestor_contrato
+        ORDER BY gestor_contrato;
+    ";
+
+            using var cmd = new Npgsql.NpgsqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lista.Add(new FinanceiroAgrupadoDTO
+                {
+                    Nome = reader["nome"]?.ToString() ?? "",
+                    Total = reader["total"] != DBNull.Value ? Convert.ToDecimal(reader["total"]) : 0,
+                    Ativo = reader["ativo"] != DBNull.Value ? Convert.ToDecimal(reader["ativo"]) : 0,
+                    Vencido = reader["vencido"] != DBNull.Value ? Convert.ToDecimal(reader["vencido"]) : 0
+                });
+            }
+
+            return lista;
+        }
+
 
         public List<FinanceiroAgrupadoDTO> ObterFinanceiroPorContratada()
-            => new();
+        {
+            using var conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            var lista = new List<FinanceiroAgrupadoDTO>();
+
+            var sql = @"
+        SELECT 
+            razao_social_contratada AS nome,
+            SUM(valor_total) AS total,
+            SUM(CASE WHEN fim_vigencia >= CURRENT_DATE THEN valor_total ELSE 0 END) AS ativo,
+            SUM(CASE WHEN fim_vigencia < CURRENT_DATE THEN valor_total ELSE 0 END) AS vencido
+        FROM contratos
+        GROUP BY razao_social_contratada
+        ORDER BY razao_social_contratada;
+    ";
+
+            using var cmd = new Npgsql.NpgsqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lista.Add(new FinanceiroAgrupadoDTO
+                {
+                    Nome = reader["nome"]?.ToString() ?? "",
+                    Total = reader["total"] != DBNull.Value ? Convert.ToDecimal(reader["total"]) : 0,
+                    Ativo = reader["ativo"] != DBNull.Value ? Convert.ToDecimal(reader["ativo"]) : 0,
+                    Vencido = reader["vencido"] != DBNull.Value ? Convert.ToDecimal(reader["vencido"]) : 0
+                });
+            }
+
+            return lista;
+        }
+
 
         public List<RelatorioGestorDTO> ObterResumoPorGestor()
-            => new();
+        {
+            var lista = new List<RelatorioGestorDTO>();
+
+            using var conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            var sql = @"
+        SELECT 
+            gestor_contrato,
+            COUNT(*) AS total_contratos,
+            COUNT(*) FILTER (WHERE fim_vigencia >= CURRENT_DATE) AS ativos,
+            COUNT(*) FILTER (WHERE fim_vigencia < CURRENT_DATE) AS vencidos
+        FROM contratos
+        GROUP BY gestor_contrato
+        ORDER BY gestor_contrato;
+    ";
+
+            using var cmd = new NpgsqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lista.Add(new RelatorioGestorDTO
+                {
+                    Gestor = reader["gestor_contrato"]?.ToString() ?? "",
+                    TotalContratos = Convert.ToInt32(reader["total_contratos"]),
+                    Ativos = Convert.ToInt32(reader["ativos"]),
+                    Vencidos = Convert.ToInt32(reader["vencidos"])
+                });
+            }
+
+            return lista;
+        }
+
 
         // =====================================================
         // AUXILIARES
