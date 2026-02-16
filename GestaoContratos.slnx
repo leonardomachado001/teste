@@ -1,2 +1,6 @@
 <Solution>
+  <Project Path="GestaoContratos.Data/GestaoContratos.Data.csproj" />
+  <Project Path="GestaoContratos.Domain/GestaoContratos.Domain.csproj" />
+  <Project Path="GestaoContratos.Infrastructure/GestaoContratos.Infrastructure.csproj" />
+  <Project Path="GestaoContratos.UI/GestaoContratos.UI.csproj" />
 </Solution>

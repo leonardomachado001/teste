@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestaoContratos.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04a1046dcc50e2c15b674540060c811d72b48ff4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecb3111dddcb567113798b609cec7bb62cf7f1e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestaoContratos.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestaoContratos.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
